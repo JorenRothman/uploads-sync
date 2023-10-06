@@ -1,0 +1,19 @@
+{
+    "name": "joren/uploads-sync",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Joren\\UploadsSync\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joren Rothman",
+            "email": "joren@instance.studio"
+        }
+    ],
+    "require-dev": {
+        "php-stubs/wp-cli-stubs": "^2.8"
+    }
+}
