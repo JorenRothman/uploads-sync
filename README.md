@@ -20,9 +20,11 @@ The plugin adds two command to the WordPress CLI:
 
 `wp uploads sync`. This command can be used to synchronize the uploads folder with the database. The command accepts the following arguments:
 
-| Argument | Description                 | Default |
-| -------- | --------------------------- | ------- |
-| `-v`     | Run script in verbose mode. | `false` |
+| Argument    | Description                                      | Default |
+| ----------- | ------------------------------------------------ | ------- |
+| `--verbose` | Run script in verbose mode.                      | `false` |
+| `--skip-db` | Skip checking database for existing attachments. | `false` |
+
 
 
 `wp uploads clean`. This command can be used to clean the uploads folder. The command does not accept any arguments.

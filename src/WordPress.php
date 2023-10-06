@@ -114,4 +114,19 @@ class WordPress
 
         wp_update_attachment_metadata($attachmentId, $metadata);
     }
+
+    public function filterExistingFiles($files)
+    {
+        global $wpdb;
+
+        $databaseEntries = $wpdb->get_results("SELECT post_title FROM $wpdb->posts WHERE post_type = 'attachment'");
+
+        $databaseEntries = array_map(function ($entry) {
+            return $entry->post_title;
+        }, $databaseEntries);
+
+        return array_filter($files, function ($file) use ($databaseEntries) {
+            return !in_array(basename($file), $databaseEntries);
+        });
+    }
 }

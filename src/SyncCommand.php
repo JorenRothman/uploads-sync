@@ -27,6 +27,13 @@ class SyncCommand
      */
     private $isVerbose = false;
 
+    /**
+     * Whether to skip checking the database.
+     *
+     * @var bool
+     */
+    private $isForce = false;
+
     public function __construct()
     {
         $this->files = new Files();
@@ -39,14 +46,20 @@ class SyncCommand
      * @param string[] $args
      * @return void
      */
-    public function __invoke($args)
+    public function __invoke($args, $assoc_args)
     {
         // Check if the user is sure.
         // If n is entered, the script will stop.
         WP_CLI::confirm('Are you sure you want to start uploads sync?');
 
-        if (isset($args[0]) && $args[0] === '--verbose') {
-            $this->isVerbose = true;
+        foreach ($assoc_args as $flag => $value) {
+            if ($flag === 'verbose') {
+                $this->isVerbose = true;
+            }
+
+            if ($flag === 'force') {
+                $this->isForce = true;
+            }
         }
 
         $this->start();
@@ -65,8 +78,11 @@ class SyncCommand
         // Get all files.
         $files = $this->files->getFiles();
 
-        $fileCount = count($files);
+        if (!$this->isForce) {
+            $files = $this->wordPress->filterExistingFiles($files);
+        }
 
+        $fileCount = count($files);
 
         // Tell user that files were found.
         WP_CLI::line('Found ' . $fileCount . ' files.');

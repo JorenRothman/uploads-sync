@@ -7,7 +7,7 @@ use Joren\UploadsSync\SyncCommand;
  * Plugin Name:       Uploads Sync
  * Plugin URI:        https://github.com/jorenrothman/uploads-sync
  * Description:       A CLI plugin to sync the uploads folder with the database.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 5.2
  * Requires PHP:      8.0
  * Author:            Joren Rothman
@@ -37,6 +37,12 @@ WP_CLI::add_command('uploads sync', SyncCommand::class, [
             'type' => 'flag',
             'name' => 'verbose',
             'description' => 'Show verbose output.',
+            'optional' => true
+        ],
+        [
+            'type' => 'flag',
+            'name' => 'skip-db',
+            'description' => 'Skip checking DB and sync all upload files.',
             'optional' => true
         ]
     ]
