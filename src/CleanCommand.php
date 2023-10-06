@@ -22,7 +22,6 @@ class CleanCommand
     {
         WP_CLI::confirm('Are you sure you want to start uploads clean?');
         WP_CLI::warning(WP_CLI::colorize('%RThis is a DESTRUCTIVE command%n'));
-        WP_CLI::confirm('Confirm');
 
         $this->start();
     }
@@ -37,6 +36,7 @@ class CleanCommand
         }
 
         $count = count($files);
+        WP_CLI::confirm('You are about to delete ' . $count . ' resized files. Are you sure?');
         $progress = WP_CLI\Utils\make_progress_bar('Deleting files', $count);
 
         WP_CLI::line("Found $count resized files.");
