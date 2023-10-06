@@ -1,5 +1,6 @@
 <?php
 
+use Joren\UploadsSync\CleanCommand;
 use Joren\UploadsSync\SyncCommand;
 
 /*
@@ -28,5 +29,20 @@ if (!defined('WP_CLI')) {
 // Load autoload.php
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Register the command.
-WP_CLI::add_command('uploads-sync', SyncCommand::class);
+// Register the sync command.
+WP_CLI::add_command('upload sync', SyncCommand::class, [
+    'shortdesc' => 'Sync the uploads folder with the database.',
+    'synopsis' => [
+        [
+            'type' => 'flag',
+            'name' => 'verbose',
+            'description' => 'Show verbose output.',
+            'optional' => true
+        ]
+    ]
+]);
+
+// Register the clean command.
+WP_CLI::add_command('upload clean', CleanCommand::class, [
+    'shortdesc' => 'Clean resized uploads from the uploads folder.',
+]);

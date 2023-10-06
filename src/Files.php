@@ -9,13 +9,13 @@ class Files
      *
      * @return array
      */
-    public function getFiles()
+    public function getFiles($isOriginal = true)
     {
         $files = [];
 
         $uploads = wp_upload_dir();
 
-        $files = $this->getFilesFromDir($uploads['basedir']);
+        $files = $this->getFilesFromDir($uploads['basedir'], $isOriginal);
 
         return $files;
     }
@@ -26,7 +26,7 @@ class Files
      * @param string $dir
      * @return array
      */
-    private function getFilesFromDir($dir)
+    private function getFilesFromDir($dir, $isOriginal = true)
     {
         $files = [];
 
@@ -34,7 +34,7 @@ class Files
         $iterator = new \RecursiveIteratorIterator($dir);
 
         foreach ($iterator as $file) {
-            if ($file->isFile() && $this->isOriginalFile($file->getPathname()) && $this->isYearFolder($file->getPath())) {
+            if ($file->isFile() && $this->isOriginalFile($file->getPathname(), $isOriginal) && $this->isYearFolder($file->getPath())) {
                 $files[] = $file->getPathname();
             }
         }
@@ -60,9 +60,10 @@ class Files
      * @param string $file
      * @return bool
      */
-    private function isOriginalFile($file)
+    private function isOriginalFile($file, $isOriginal = true)
     {
+
         // match the pattern -123x123.ext
-        return preg_match('/-\d+x\d+\./', $file) === 0;
+        return preg_match('/-\d+x\d+\./', $file) === intval(!$isOriginal);
     }
 }

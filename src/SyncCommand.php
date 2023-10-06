@@ -43,9 +43,9 @@ class SyncCommand
     {
         // Check if the user is sure.
         // If n is entered, the script will stop.
-        WP_CLI::confirm('Are you sure you want to start uploads-sync?');
+        WP_CLI::confirm('Are you sure you want to start uploads sync?');
 
-        if (isset($args[0]) && $args[0] === '-v') {
+        if (isset($args[0]) && $args[0] === '--verbose') {
             $this->isVerbose = true;
         }
 
@@ -117,9 +117,6 @@ class SyncCommand
 
         // Tell user that script is done.
         WP_CLI::success('Done!');
-
-        // Print donation message.
-        WP_CLI::line('If you like this plugin, please consider donating: https://www.paypal.com/donate/?hosted_button_id=SJVH7EK43F5L8');
     }
 
     /**
