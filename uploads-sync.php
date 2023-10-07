@@ -1,13 +1,14 @@
 <?php
 
-use Joren\UploadsSync\CleanCommand;
+use Joren\UploadsSync\CleanDBCommand;
+use Joren\UploadsSync\CleanResizedCommand;
 use Joren\UploadsSync\SyncCommand;
 
 /*
  * Plugin Name:       Uploads Sync
  * Plugin URI:        https://github.com/jorenrothman/uploads-sync
  * Description:       A CLI plugin to sync the uploads folder with the database.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Requires at least: 5.2
  * Requires PHP:      8.0
  * Author:            Joren Rothman
@@ -48,7 +49,12 @@ WP_CLI::add_command('uploads sync', SyncCommand::class, [
     ]
 ]);
 
-// Register the clean command.
-WP_CLI::add_command('uploads clean', CleanCommand::class, [
+// Register the clean resized command.
+WP_CLI::add_command('uploads clean resized', CleanResizedCommand::class, [
     'shortdesc' => 'Clean resized uploads from the uploads folder.',
+]);
+
+// Register the clean db command.
+WP_CLI::add_command('uploads clean db', CleanDBCommand::class, [
+    'shortdesc' => 'Clean resized uploads from the database.',
 ]);

@@ -129,4 +129,15 @@ class WordPress
             return !in_array(basename($file), $databaseEntries);
         });
     }
+
+    public function getAllDatabaseAttachmentIDs()
+    {
+        global $wpdb;
+
+        $databaseEntries = $wpdb->get_results("SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment'");
+
+        return array_map(function ($entry) {
+            return $entry->ID;
+        }, $databaseEntries);
+    }
 }

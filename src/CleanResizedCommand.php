@@ -4,7 +4,7 @@ namespace Joren\UploadsSync;
 
 use WP_CLI;
 
-class CleanCommand
+class CleanResizedCommand
 {
     /**
      * Files instance.
@@ -20,7 +20,7 @@ class CleanCommand
 
     public function __invoke($args)
     {
-        WP_CLI::confirm('Are you sure you want to start uploads clean?');
+        WP_CLI::confirm('Are you sure you want to start removing resized images?');
         WP_CLI::warning(WP_CLI::colorize('%RThis is a DESTRUCTIVE command%n'));
 
         $this->start();
