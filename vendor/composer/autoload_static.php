@@ -22,6 +22,11 @@ class ComposerStaticInit6c6db6a4db4ccfa92ef0ec61bbfa4eb4
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Joren\\UploadsSync\\CleanDBCommand' => __DIR__ . '/../..' . '/src/CleanDBCommand.php',
+        'Joren\\UploadsSync\\CleanResizedCommand' => __DIR__ . '/../..' . '/src/CleanResizedCommand.php',
+        'Joren\\UploadsSync\\Files' => __DIR__ . '/../..' . '/src/Files.php',
+        'Joren\\UploadsSync\\SyncCommand' => __DIR__ . '/../..' . '/src/SyncCommand.php',
+        'Joren\\UploadsSync\\WordPress' => __DIR__ . '/../..' . '/src/WordPress.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

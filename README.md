@@ -27,8 +27,8 @@ The plugin adds two command to the WordPress CLI:
 
 
 
-`wp uploads clean`. This command can be used to clean the uploads folder. The command does not accept any arguments.
+`wp uploads clean resized`. This command can be used to clean the uploads folder. The command does not accept any arguments.
 
-
+`wp uploads clean db`. This command is used to remove all attachments from the database. The command does not accept any arguments.
 
 

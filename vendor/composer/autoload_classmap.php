@@ -7,4 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Joren\\UploadsSync\\CleanDBCommand' => $baseDir . '/src/CleanDBCommand.php',
+    'Joren\\UploadsSync\\CleanResizedCommand' => $baseDir . '/src/CleanResizedCommand.php',
+    'Joren\\UploadsSync\\Files' => $baseDir . '/src/Files.php',
+    'Joren\\UploadsSync\\SyncCommand' => $baseDir . '/src/SyncCommand.php',
+    'Joren\\UploadsSync\\WordPress' => $baseDir . '/src/WordPress.php',
 );
