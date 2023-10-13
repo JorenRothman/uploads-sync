@@ -63,7 +63,7 @@ class WordPress
 
         $file = [
             'guid' => $this->uploadsDir['url'] . '/' . basename($path),
-            'name' => basename($path),
+            'name' => preg_replace('/\.[^.]+$/', '', basename($path)),
             'mime_type' => wp_check_filetype($path, null),
             'upload_date' => $date,
         ];
@@ -126,7 +126,9 @@ class WordPress
         }, $databaseEntries);
 
         return array_filter($files, function ($file) use ($databaseEntries) {
-            return !in_array(basename($file), $databaseEntries);
+            $filename = preg_replace('/\.[^.]+$/', '', basename($file));
+
+            return !in_array($filename, $databaseEntries);
         });
     }
 

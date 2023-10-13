@@ -8,7 +8,7 @@ use Joren\UploadsSync\SyncCommand;
  * Plugin Name:       Uploads Sync
  * Plugin URI:        https://github.com/jorenrothman/uploads-sync
  * Description:       A CLI plugin to sync the uploads folder with the database.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 5.2
  * Requires PHP:      8.0
  * Author:            Joren Rothman
